@@ -1,0 +1,114 @@
+html{
+    height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+body{
+    background-image: url('../img/background-layout.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+#principal-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#content-div{
+    background-color: rgba(0, 0, 0, 0.555);
+    height: auto;
+    width: 20em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 8px;
+    border-color: #2a2e34;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.input-image{
+    height: 150px;
+    width: 150px;
+}
+.forms-h2{
+    color: #e4e1dc;
+    margin: 1rem;
+}
+
+.login-message{
+    color: #9ca3af;
+    margin: 1rem;
+    text-align: center;
+}
+
+.login-text{
+    color: #9ca3af;
+    margin: 0.75rem;
+    background-color: #2a2e34;
+    border-radius: 8px;
+    border-color: transparent;
+    width: 20em;
+    height: 1.25em;
+    text-align: center;
+    
+}
+
+#username-input{
+    background-color: #2a2e34;
+    border-radius: 8px;
+    border-color: transparent;
+    width: 20em;
+    height: 1.15em;
+    margin-bottom: 0%;
+}
+
+#password-input{
+    background-color: #2a2e34;
+    border-radius: 8px;
+    border-color: transparent;
+    width: 20em;
+    height: 1.15em;
+    
+}
+
+.login-text::placeholder{
+    color: #e4e1dc;
+    text-align: center;
+}
+.buttons{
+    background-color: #2a2e34;
+    color: #e4e1dc;
+    margin-bottom: 1em;
+    width: 5rem;
+    height: 2.5rem;
+    border-radius: 8px;
+    border-color: transparent;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+.buttons:active{
+    background: #1d2024;       
+    transform: translateY(1px); 
+    box-shadow: inset 0 3px 6px rgba(0,0,0,.35);
+    
+}
+
+.page-forms{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.error-to-user{
+    color: red;
+
+}

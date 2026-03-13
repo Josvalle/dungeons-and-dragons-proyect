@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>D&DLyfter</title>
+    <link rel="stylesheet" href="styles/styles-user.css" />
+    <link rel="icon" href="img/icon.png" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  </head>
+
+  <body>
+    <header>
+      <div class="nav-bar">
+        <nav class="nav-bar-container">
+          <div id="icon-welcome">
+            <img id="page-icon" src="img/d-d-icon.png" />
+            <p id="welcome-user">*welcome message by now*</p>
+          </div>
+          <div class="link-container">
+            <a href="">Create a new character</a>
+            <a href="">Your Characters</a>
+            <a href="">Your mataches </a>
+            <a href="">Inventory</a>
+          </div>
+          <div id="button-logout-DM-change" class="containers">
+            <a id="DM-change" href="">Change to DM</a>
+            <button id="logout-button">Logout</button>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <div id="body-container">
+      <div id="body-info">
+        <h2 id="info-header">Your Information</h2>
+        <div id="fullname-visible" class="edit-form-text">
+          <p class="text-user" id="full-Name">*User full Name</p>
+          <svg
+            class="edit-button"
+            id="edit-fullname"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M12 20h9" />
+            <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z" />
+            <path d="M15 5l4 4" />
+          </svg>
+        </div>
+        <form id="form-fullname" class="hidden">
+          <input
+            type="text"
+            id="name-of-fullname"
+            class="edits-texts"
+            placeholder="Please enter the new Name"
+          />
+          <input
+            type="text"
+            id="lastname-of-fullname"
+            class="edits-texts"
+            placeholder="Please enter the new last name"
+          />
+          <button id="accept-fullname" class="accept">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M20 6L9 17l-5-5" />
+            </svg>
+          </button>
+          <button id="cancel-fullname" class="cancel">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M18 6L6 18" />
+              <path d="M6 6l12 12" />
+            </svg>
+          </button>
+        </form>
+        <div id="username-visible" class="edit-form-text">
+          <p class="text-user" id="username">*User Username *</p>
+          <svg
+            class="edit-button"
+            id="edit-username"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M12 20h9" />
+            <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z" />
+            <path d="M15 5l4 4" />
+          </svg>
+        </div>
+        <form id="form-username" class="hidden">
+          <input
+            type="text"
+            id="username-edit"
+            class="edits-texts"
+            placeholder="Please enter the new username"
+          />
+          <button id="accept-username" class="accept">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M20 6L9 17l-5-5" />
+            </svg>
+          </button>
+          <button id="cancel-username" class="cancel">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M18 6L6 18" />
+              <path d="M6 6l12 12" />
+            </svg>
+          </button>
+        </form>
+        <div id="email-visible" class="edit-form-text">
+          <p class="text-user" id="email-info">*User email</p>
+          <svg
+            class="edit-button"
+            id="edit-email"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M12 20h9" />
+            <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z" />
+            <path d="M15 5l4 4" />
+          </svg>
+        </div>
+        <form id="form-email" class="hidden">
+          <input
+            type="text"
+            id="email-edit"
+            class="edits-texts"
+            placeholder="Please enter the new email"
+          />
+          <button id="accept-email" class="accept">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M20 6L9 17l-5-5" />
+            </svg>
+          </button>
+          <button id="cancel-email" class="cancel">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M18 6L6 18" />
+              <path d="M6 6l12 12" />
+            </svg>
+          </button>
+        </form>
+        <a id="link-password" href="">Change the password</a>
+      </div>
+    </div>
+  </body>
+  <script src="scripts/userMainPage.js"></script>
+</html>

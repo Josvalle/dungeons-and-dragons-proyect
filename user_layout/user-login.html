@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>D&DLyfter</title>
+    <link rel="stylesheet" href="styles/styles.css" />
+    <link rel="icon" href="img/icon.png" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <div id="principal-div">
+      <div id="content-div">
+        <form class="page-forms" id="login-form">
+          <img src="img/d-d-icon.png" class="input-image" />
+          <h2 class="forms-h2" id="login-h2">Login</h2>
+          <input
+            type="text"
+            class="login-text"
+            id="username-input"
+            placeholder="Please enter your usarname"
+            required
+          />
+          <input
+            type="password"
+            class="login-text"
+            id="password-input"
+            placeholder="Please enter your password"
+            required
+          />
+          <p class="error-to-user" id="login-error"></p>
+          <button type="submit" id="login-button" class="buttons">Login</button>
+          <a href="user-registration.html" class="links"> Not a user yet?</a>
+        </form>
+      </div>
+    </div>
+  </body>
+  <script src="scripts/userLogin.js"></script>
+</html>

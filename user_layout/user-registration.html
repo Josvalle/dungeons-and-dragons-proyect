@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>user-registration</title>
+    <link rel="stylesheet" href="styles/styles.css" />
+    <link rel="icon" href="img/icon.png" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <div id="principal-div">
+      <div id="content-div">
+        <form id="registration-form" class="page-forms">
+          <img src="img/d-d-icon.png" class="input-image" />
+          <h2 class="forms-h2">Create your account</h2>
+          <p class="login-message">
+            Welcome to D&D Lyfter please fill up the below information to create
+            your account
+          </p>
+          <input
+            type="text"
+            id="registration-name"
+            class="login-text"
+            placeholder="Please enter your Name"
+            required
+          />
+          <input
+            type="text"
+            id="registration-lastname"
+            class="login-text"
+            placeholder="Please enter your Last Name"
+            required
+          />
+          <input
+            type="text"
+            id="user-email"
+            class="login-text"
+            placeholder="Please enter your email"
+            required
+          />
+          <input
+            type="text"
+            id="username"
+            class="login-text"
+            placeholder="Please enter your usarname"
+            required
+          />
+          <input
+            type="password"
+            id="registration-password"
+            class="login-text"
+            placeholder="Please enter your Password"
+            pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&]).+$"
+            title="Min 8 chars, letters, numbers and one special character"
+            minlength="8"
+            required
+          />
+          <input
+            type="password"
+            id="registration-con-password"
+            class="login-text"
+            placeholder="Please confirm your password"
+            required
+          />
+          <p class="error-to-user" id="registration-error"></p>
+          <button type="submit" class="buttons">Create User</button>
+          <a id="link-registration" href="user-login.html">Have an account?</a>
+        </form>
+      </div>
+    </div>
+  </body>
+  <script src="scripts/userRegistration.js"></script>
+</html>
