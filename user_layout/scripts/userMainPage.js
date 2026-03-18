@@ -24,6 +24,20 @@ function userInformation(userData){
     userEmail.textContent = (`Email: ${userData.email}`)
 }
 
+// function updateNameData(userID,name,lastname){
+//     try{
+//         const data = {
+//         'id':userID,
+//         'name':name,
+//         'lastname':lastname
+//     };
+//     return data
+//     }catch(error){
+//         console.log(error)
+//     }
+    
+// }
+
 async function main() {
     try{
         const userDataR = await userData(userID)
@@ -37,7 +51,7 @@ async function main() {
 
 main()
 
-divBody.addEventListener('click', (e)=>{
+divBody.addEventListener('click', async (e)=>{
     
     const nameVidiv = document.getElementById('fullname-visible');
     const nameForm = document.getElementById('form-fullname');
@@ -50,35 +64,74 @@ divBody.addEventListener('click', (e)=>{
     const editButtonUsername = document.getElementById('edit-username');
     const editButtonEmail = document.getElementById('edit-email');
     const editButton = e.target.closest('.edit-button');
-    const acceptButton = e.target.closest('.accept');
-    const cancelButton = e.target.closest('.cancel');
+    if(!editButton)return;
+    const fieldButton = editButton.dataset.field;
+
+    console.log(fieldButton)
     
 
-    
-if (editButton){
-    if (editButton.id === 'edit-fullname'){
+    if (fieldButton === 'fullname'){
         nameVidiv.className = 'hidden'
         editButtonUsername.classList.replace('edit-button','hidden')
         editButtonEmail.classList.replace('edit-button','hidden')
         nameForm.className = ''
         
-    } else if(editButton.id === 'edit-username') {
+    } else if(fieldButton === 'username') {
         usernameVisiDiv.className = 'hidden';
         editButtonName.classList.replace('edit-button','hidden')
         editButtonEmail.classList.replace('edit-button','hidden')
         usernameForm.className = ''
-    }else if(editButton.id === 'edit-email'){
+    }else if(fieldButton === 'email'){
         emailVisiDiv.className = 'hidden';
         editButtonName.classList.replace('edit-button','hidden')
         editButtonUsername.classList.replace('edit-button','hidden')
         emailform.className = ''
-    }
-}
-    
-
-    if (acceptButton){
-        e.preventDefault()
-        console.log(acceptButton.id)
+    }else if(fieldButton === 'accept-fullname-button'){
+        try{
+            e.preventDefault()
+        const updateNameInput = document.getElementById('name-of-fullname');
+        const updateLastNameInput = document.getElementById('lastname-of-fullname');
+        const updateName = updateNameInput.value.trim();
+        const updateLastName = updateLastNameInput.value.trim();
+        const nameUpdateInfo = {
+        'id':userID,
+        'name':updateName,
+        'lastname':updateLastName
+        };
+        const updateProcess = await axios.post('http://localhost:5000/users/update', nameUpdateInfo)
+        location.reload()
+        }catch (error){
+            console.log(error)
+        }
+        
+    }else if (fieldButton === 'accept-username-button'){
+        try{
+            e.preventDefault()
+            const updateUsernameInput = document.getElementById('username-edit');
+            const updateUsername = updateUsernameInput.value.trim();
+            const updateInfo = {
+            'id':userID,
+            'username':updateUsername
+            };
+            const updateProcess = await axios.post('http://localhost:5000/users/update', updateInfo)
+            location.reload()
+        }catch (error){
+            console.log(error)
+        }
+    }else if (fieldButton === 'accept-email-button'){
+        try{
+            e.preventDefault()
+            const updateEmailInput = document.getElementById('email-edit');
+            const updateEmail = updateEmailInput.value.trim();
+            const updateInfo = {
+            'id':userID,
+            'email':updateEmail
+            };
+            const updateProcess = await axios.post('http://localhost:5000/users/update', updateInfo)
+            location.reload()
+        }catch (error){
+            console.log(error)
+        }
     }
 })
 

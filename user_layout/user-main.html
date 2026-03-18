@@ -39,6 +39,7 @@
           <svg
             class="edit-button"
             id="edit-fullname"
+            data-field="fullname"
             xmlns="http://www.w3.org/2000/svg"
             width="24"
             height="24"
@@ -61,14 +62,20 @@
             id="name-of-fullname"
             class="edits-texts"
             placeholder="Please enter the new Name"
+            required
           />
           <input
             type="text"
             id="lastname-of-fullname"
             class="edits-texts"
             placeholder="Please enter the new last name"
+            required
           />
-          <button id="accept-fullname" class="accept">
+          <button
+            id="accept-fullname"
+            class="edit-button accept"
+            data-field="accept-fullname-button"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -84,7 +91,11 @@
               <path d="M20 6L9 17l-5-5" />
             </svg>
           </button>
-          <button id="cancel-fullname" class="cancel">
+          <button
+            id="cancel-fullname"
+            class="edit-button cancel"
+            data-field="cancel-fullname-button"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -107,6 +118,7 @@
           <svg
             class="edit-button"
             id="edit-username"
+            data-field="username"
             xmlns="http://www.w3.org/2000/svg"
             width="24"
             height="24"
@@ -130,7 +142,11 @@
             class="edits-texts"
             placeholder="Please enter the new username"
           />
-          <button id="accept-username" class="accept">
+          <button
+            id="accept-username"
+            class="edit-button accept"
+            data-field="accept-username-button"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -146,7 +162,11 @@
               <path d="M20 6L9 17l-5-5" />
             </svg>
           </button>
-          <button id="cancel-username" class="cancel">
+          <button
+            id="cancel-username"
+            class="edit-button cancel"
+            data-field="cancel-username-button"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -169,6 +189,7 @@
           <svg
             class="edit-button"
             id="edit-email"
+            data-field="email"
             xmlns="http://www.w3.org/2000/svg"
             width="24"
             height="24"
@@ -192,7 +213,11 @@
             class="edits-texts"
             placeholder="Please enter the new email"
           />
-          <button id="accept-email" class="accept">
+          <button
+            id="accept-email"
+            class="edit-button accept"
+            data-field="accept-email-button"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -208,7 +233,11 @@
               <path d="M20 6L9 17l-5-5" />
             </svg>
           </button>
-          <button id="cancel-email" class="cancel">
+          <button
+            id="cancel-email"
+            class="edit-button cancel"
+            data-field="cancel-email-button"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"

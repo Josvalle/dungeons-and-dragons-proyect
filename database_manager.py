@@ -69,3 +69,13 @@ class User():
                 return None
             else:
                 return user_info[0]
+            
+    
+    def update_user_information(self,id,data):
+        stmt =  (update(self.users_table).where(self.users_table.c.id == id).values(**data))
+        with engine.begin() as conn:
+                result = conn.execute(stmt)
+                if result.rowcount == 0:
+                    return None
+                else:
+                    return ('All good')

@@ -39,7 +39,19 @@ def obtain_user_info(user_id):
         return Response(status=404)
     else:
         return user_details
-    
+
+@app.route ('/users/update', methods=['POST'])
+def update_information():
+    data = request.get_json()
+    try:
+        user_id = data.pop('id')
+        update_user = user_info.update_user_information(user_id,data)
+        if (update_user == None):
+            return Response(status=401)
+        else:
+            return Response(status=200)
+    except Exception as e:
+        return Response(status=500)
 
 if __name__ == "__main__":
     
