@@ -46,9 +46,9 @@ class User():
                     return exist_users[0]
 
 
-    def change_password(self,username, old_password, new_password):
+    def change_password(self,id, old_password, new_password):
         try:
-            change_password = (update(self.users_table).where(and_(self.users_table.c.username == username, self.users_table.c.password == old_password)).values(password = new_password ))
+            change_password = (update(self.users_table).where(and_(self.users_table.c.id == id, self.users_table.c.password == old_password)).values(password = new_password ))
             with engine.begin() as conn:
                 result = conn.execute(change_password)
                 if result.rowcount == 0:

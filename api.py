@@ -40,6 +40,19 @@ def obtain_user_info(user_id):
     else:
         return user_details
 
+@app.route ('/user/password/change/<user_id_p>', methods=['POST'])
+def change_password(user_id_p):
+    data = request.get_json()
+    try:
+        change_user_password = user_info.change_password(user_id_p,data.get('old'),data.get('new'))
+        if (change_user_password == None):
+            return Response(status=403)
+        else:
+            return Response(status=200)
+    except Exception as e:
+        return Response(status=500)
+
+
 @app.route ('/users/update', methods=['POST'])
 def update_information():
     data = request.get_json()
@@ -52,6 +65,10 @@ def update_information():
             return Response(status=200)
     except Exception as e:
         return Response(status=500)
+
+
+    
+
 
 if __name__ == "__main__":
     

@@ -8,13 +8,11 @@ loginForm.addEventListener('submit', async (e)=>{
     const errorMessage = document.getElementById('login-error')
     const username = usernameInput.value.trim();
     const password = passwordInput.value.trim();
-    console.log(username, password)
     const jsonData = {
         "username":username,
         "password":password
     };
     try{
-        console.log(jsonData)
         const loginUser = await axios.post('http://localhost:5000/login', jsonData);
         window.location.href = './user-main.html';
         

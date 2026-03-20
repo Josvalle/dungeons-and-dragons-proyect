@@ -1,5 +1,6 @@
 const userID = 1
 const divBody = document.getElementById('body-info')
+const logout_button = document.getElementById('logout-button')
 
 async function userData(userID) {
     try{
@@ -24,19 +25,7 @@ function userInformation(userData){
     userEmail.textContent = (`Email: ${userData.email}`)
 }
 
-// function updateNameData(userID,name,lastname){
-//     try{
-//         const data = {
-//         'id':userID,
-//         'name':name,
-//         'lastname':lastname
-//     };
-//     return data
-//     }catch(error){
-//         console.log(error)
-//     }
-    
-// }
+
 
 async function main() {
     try{
@@ -135,3 +124,6 @@ divBody.addEventListener('click', async (e)=>{
     }
 })
 
+logout_button.addEventListener('click', ()=>{
+    window.location.href = './user-login.html'
+})
