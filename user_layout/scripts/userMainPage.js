@@ -1,10 +1,16 @@
-const userID = 1
+const token = localStorage.getItem('token')
 const divBody = document.getElementById('body-info')
 const logout_button = document.getElementById('logout-button')
 
-async function userData(userID) {
+
+
+async function userData(token) {
     try{
-        const response = await axios.get(`http://localhost:5000/users/${userID}`)
+        const response = await axios.get('http://localhost:5000/users', {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
         return response.data
     }catch(error){
         console.log(`There was an error: ${error}`)
@@ -29,9 +35,14 @@ function userInformation(userData){
 
 async function main() {
     try{
-        const userDataR = await userData(userID)
+        if (token === null){
+        window.location.href = './user-login.html'
+    }else{
+        const userDataR = await userData(token)
         welcomeUser(userDataR)
         userInformation(userDataR)
+    }
+        
     }catch (error){
         console.log(error)
     }
@@ -55,9 +66,6 @@ divBody.addEventListener('click', async (e)=>{
     const editButton = e.target.closest('.edit-button');
     if(!editButton)return;
     const fieldButton = editButton.dataset.field;
-
-    console.log(fieldButton)
-    
 
     if (fieldButton === 'fullname'){
         nameVidiv.className = 'hidden'
@@ -83,11 +91,14 @@ divBody.addEventListener('click', async (e)=>{
         const updateName = updateNameInput.value.trim();
         const updateLastName = updateLastNameInput.value.trim();
         const nameUpdateInfo = {
-        'id':userID,
         'name':updateName,
         'lastname':updateLastName
         };
-        const updateProcess = await axios.post('http://localhost:5000/users/update', nameUpdateInfo)
+        const updateProcess = await axios.post('http://localhost:5000/users/update', nameUpdateInfo, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        } )
         location.reload()
         }catch (error){
             console.log(error)
@@ -99,10 +110,13 @@ divBody.addEventListener('click', async (e)=>{
             const updateUsernameInput = document.getElementById('username-edit');
             const updateUsername = updateUsernameInput.value.trim();
             const updateInfo = {
-            'id':userID,
             'username':updateUsername
             };
-            const updateProcess = await axios.post('http://localhost:5000/users/update', updateInfo)
+            const updateProcess = await axios.post('http://localhost:5000/users/update', updateInfo, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
             location.reload()
         }catch (error){
             console.log(error)
@@ -113,10 +127,13 @@ divBody.addEventListener('click', async (e)=>{
             const updateEmailInput = document.getElementById('email-edit');
             const updateEmail = updateEmailInput.value.trim();
             const updateInfo = {
-            'id':userID,
             'email':updateEmail
             };
-            const updateProcess = await axios.post('http://localhost:5000/users/update', updateInfo)
+            const updateProcess = await axios.post('http://localhost:5000/users/update', updateInfo, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
             location.reload()
         }catch (error){
             console.log(error)
@@ -125,5 +142,6 @@ divBody.addEventListener('click', async (e)=>{
 })
 
 logout_button.addEventListener('click', ()=>{
+    localStorage.removeItem('token')
     window.location.href = './user-login.html'
 })
