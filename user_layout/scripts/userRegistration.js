@@ -1,4 +1,9 @@
 const registratioForm = document.getElementById('registration-form')
+const alreadyLogin = localStorage.getItem('token')
+
+if (alreadyLogin !== null){
+    window.location.href = './user-main.html';
+}
 
 function parseData(name,lastname,email,username,password,confirmPassword,errorMessage){
     try{
@@ -42,6 +47,8 @@ registratioForm.addEventListener('submit', async (e) => {
     try{
         const userInfo = parseData(name,lastname,email,username,password,confirmPassword,errorMessage)
         const registration = await axios.post('http://localhost:5000/register', userInfo)
+        const tokenID = registration.data.token
+        localStorage.setItem('token',tokenID)
         errorMessage.textContent = 'All inform good!'
         window.location.href = './user-main.html';
 

@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Roll-dice</title>
+    <link rel="icon" href="img/icon.png" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="styles/roll-dices.css" />
   </head>
   <body>
@@ -68,6 +70,12 @@
           class="dice-images"
         />
         <button data-field="d20" class="button-roll">Roll</button>
+      </div>
+    </div>
+    <div id="dice-results">
+      <div id="conainers-results">
+        <h2>Results</h2>
+        <ul></ul>
       </div>
     </div>
   </body>

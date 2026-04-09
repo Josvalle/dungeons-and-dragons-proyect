@@ -11,7 +11,7 @@ class User():
 
     def insert_new_user(self, user_name, last_name, user_email,username, password):
         try:
-            stmt = insert(self.users_table).values(name=user_name, lastname=last_name, email=user_email, username=username, password=password,role_id=2)
+            stmt = insert(self.users_table).returning(self.users_table.c.id,self.users_table.c.role_id).values(name=user_name, lastname=last_name, email=user_email, username=username, password=password,role_id=2)
             with engine.connect() as conn:
                 result = conn.execute(stmt)
                 conn.commit()

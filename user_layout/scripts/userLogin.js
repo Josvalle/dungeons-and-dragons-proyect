@@ -1,4 +1,9 @@
 const loginForm = document.getElementById('login-form')
+const alreadyLogin = localStorage.getItem('token')
+
+if (alreadyLogin !== null){
+    window.location.href = './user-main.html';
+}
 
 
 loginForm.addEventListener('submit', async (e)=>{
@@ -14,6 +19,8 @@ loginForm.addEventListener('submit', async (e)=>{
     };
     try{
         const loginUser = await axios.post('http://localhost:5000/login', jsonData);
+        const tokenID = loginUser.data.token
+        localStorage.setItem('token',tokenID)
         window.location.href = './user-main.html';
         
     }catch(error){

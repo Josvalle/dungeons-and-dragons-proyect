@@ -1,4 +1,4 @@
-const userID = 1
+const token = localStorage.getItem('token')
 const changeButton = document.getElementById('accept-change')
 const changeCancel = document.getElementById('cancel-change')
 
@@ -18,7 +18,11 @@ changeButton.addEventListener('click', async (e)=>{
             'new':newPassword,
         }
         try{
-            const changePassword = await axios.post(`http://localhost:5000/user/password/change/${userID}`, jsonData)
+            const changePassword = await axios.post('http://localhost:5000/user/password/change', jsonData, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
             alert('Password change Succesfully')
             window.location.href = './user-main.html'
         }catch(error){
