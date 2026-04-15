@@ -79,3 +79,37 @@ class User():
                     return None
                 else:
                     return ('All good')
+                
+
+
+class Dices():
+    def __init__(self):
+        self.dices_table = Table('dices', metadata_obj, autoload_with=engine, schema='dyd',)
+
+    def insert_new_dice_roll(self, dice_type, number_roll, user_id):
+        try:
+            new_roll = insert(self.dices_table).values(dice = dice_type, number = number_roll, user_id = user_id)
+            with engine.connect() as conn:
+                result = conn.execute(new_roll)
+                conn.commit()
+                return result
+        except Exception as e:
+            print(e)
+            return None
+    
+
+    def dices_resutls (self, user_id):
+        try:
+            
+            dice_result = select(self.dices_table).where(self.dices_table.c.user_id == user_id )
+            with engine.connect() as conn:
+
+                result = conn.execute(dice_result).mappings().all()
+                dict_results = [dict(row) for row in result]
+                if(len(result)==0):
+                    return None
+                else:
+                    return dict_results
+        except Exception as e:
+            print(e)
+            return None
