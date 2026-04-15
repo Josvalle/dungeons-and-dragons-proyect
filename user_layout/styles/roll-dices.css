@@ -86,15 +86,20 @@ h2{
     width: 20em;
 }
 
-#conainers-results{
+#containers-results{
     background-color: #e4e1dc;
     border-radius: 8px;
     margin: 0.50em;
     height: 30em;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
 }
 
 h2{
-    color: #2a2e34;
+    color: #e4e1dc;
+    text-align: center;
+}
+
+.table-tr{
+    text-align: center;
 }

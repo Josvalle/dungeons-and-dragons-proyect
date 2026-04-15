@@ -1,12 +1,13 @@
 from flask import Flask, request,jsonify, Response
 from flask_cors import CORS
-from database_manager import User
+from database_manager import User, Dices
 from authenticator import JWT_Manager
 
 
 app = Flask(__name__)
 CORS(app)
 user_info = User()
+dices_table = Dices()
 mask_jwt = JWT_Manager()
 
 @app.route('/register', methods=['POST'])
@@ -102,8 +103,46 @@ def update_information():
         return Response(status=500)
 
 
-    
+@app.route('/dices', methods=['POST'])
+def insert_dice_roll():
+    try:
+        token = request.headers.get('Authorization')
+        if(token is not None):
+            data = request.get_json()
+            token = token.replace("Bearer ","")
+            decoded = mask_jwt.decode(token)
+            user_id = decoded['id']
+            update_user = dices_table.insert_new_dice_roll(data.get('dice'),data.get('number'),user_id)
+            if (update_user == None):
+                
+                return Response(status=401)
+            else:
+                
+                show_result = dices_table.dices_resutls(user_id)
 
+                return jsonify(show_result), 200
+        else:
+            return Response(status=503)
+    except Exception as e:
+        print(e)
+        return Response(status=500)
+
+@app.route('/rolls')
+def show_rolls():
+    try:
+        token = request.headers.get('Authorization')
+        if(token is not None):
+            token = token.replace("Bearer ","")
+            decoded = mask_jwt.decode(token)
+            user_id = decoded['id']
+            rolls_results = dices_table.dices_resutls(user_id)
+            if (rolls_results == None):
+                return Response(status=401)
+            else:
+                return jsonify(rolls_results),200
+    except Exception as e:
+        print(e)
+        return Response(status=500)
 
 if __name__ == "__main__":
     
